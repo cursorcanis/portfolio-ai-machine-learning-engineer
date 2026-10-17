@@ -1,0 +1,8 @@
+/target
+.env
+.env.local
+/qdrant-storage
+/bin/qdrant.exe
+/bin/qdrant
+/bin/ai-advisor-rs.exe
+/bin/ai-advisor-rs

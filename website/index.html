@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alfredo Alea · Data / AI Engineer</title>
+<meta name="description" content="Alfredo Alea, Data / AI Engineer. Case studies: AI Advisor, a self-hosted RAG advisor that answers in a thinker's own voice, and shelter capacity gaps in Georgia from public HUD data.">
+<meta property="og:title" content="Alfredo Alea · Data / AI Engineer">
+<meta property="og:description" content="Two verified case studies: AI Advisor, a RAG advisor built from transcripts (multilingual retrieval 52% → 85%), and Georgia shelter capacity gaps from HUD data.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aleaportfolio.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23134e4a'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='17' fill='%23f5f1e8' text-anchor='middle'%3EAA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f3ec; --surface:#fffdf8; --ink:#1c1f1e; --muted:#5b625f; --line:#ddd6c8;
+  --accent:#0f5e57; --accent-soft:#e0eeea; --warn:#8a4b0f;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#121514; --surface:#1a1e1d; --ink:#ece8df; --muted:#a3aaa6; --line:#2e3533;
+    --accent:#5fc2b5; --accent-soft:#1d2e2b; --warn:#e3a463; color-scheme:dark}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+header.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px;flex-wrap:wrap}
+.brand{font-family:var(--serif);font-weight:650;font-size:1.15rem;color:var(--ink);text-decoration:none}
+nav{display:flex;gap:20px;flex-wrap:wrap}
+nav a{color:var(--muted);text-decoration:none;font-size:.92rem;font-weight:500}
+nav a:hover{color:var(--ink)}
+.hero{padding-block:clamp(56px,10vw,112px) clamp(40px,7vw,72px)}
+.eyebrow{font:500 .78rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+h1,h2,h3{font-family:var(--serif);font-weight:650;line-height:1.15;letter-spacing:-.01em;margin:0}
+h1{font-size:clamp(2.3rem,6vw,3.9rem);margin-top:18px;max-width:16ch}
+.lede{font-size:clamp(1.05rem,2vw,1.25rem);color:var(--muted);max-width:60ch;margin:22px 0 0}
+.links{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;font-weight:600;font-size:.94rem;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--surface)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:56px}
+.stat{background:var(--surface);padding:22px 22px 20px}
+.stat b{display:block;font:650 2rem/1.1 var(--serif);color:var(--accent)}
+.stat span{display:block;color:var(--muted);font-size:.9rem;margin-top:6px}
+section.case{padding-block:clamp(56px,8vw,96px);border-top:1px solid var(--line)}
+.case-head{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;max-width:760px}
+.case h2{font-size:clamp(1.7rem,4vw,2.5rem)}
+.meta{font:500 .82rem/1.6 var(--mono);color:var(--muted)}
+.q{margin-top:34px;padding:22px 24px;background:var(--accent-soft);border-radius:12px;max-width:760px}
+.q h3{font-size:1rem;font-family:var(--sans);font-weight:600;margin-bottom:6px}
+.q p{margin:0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px;margin-top:40px;align-items:start}
+.block h3{font-size:1.2rem;margin-bottom:12px}
+.block ul,.block ol{margin:0;padding-left:1.2em}
+.block li{margin-bottom:8px}
+.tablewrap{overflow-x:auto;margin-top:40px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.95rem}
+th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line)}
+th{font-weight:600;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:0}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+td.num strong{color:var(--accent)}
+figure{margin:40px 0 0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px}
+figure img{display:block;width:100%;height:auto;border-radius:6px}
+figcaption{color:#5b625f;font-size:.86rem;padding:10px 6px 2px}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px}
+.figs figure{margin-top:24px}
+.verify{margin-top:40px;border-left:3px solid var(--accent);padding:4px 0 4px 20px;max-width:760px}
+.verify h3{font-size:1.1rem;margin-bottom:10px}
+.verify ul{margin:0;padding-left:1.1em}
+.verify li{margin-bottom:6px}
+.case-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
+.case .lede{margin-top:26px;max-width:66ch}
+dl.steps{margin:0;display:grid;gap:14px}
+dl.steps dt{font:500 .78rem/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+dl.steps dd{margin:2px 0 0}
+dl.facts{margin:40px 0 0;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+dl.facts>div{display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:16px;padding:14px 18px;border-bottom:1px solid var(--line)}
+dl.facts>div:last-child{border-bottom:0}
+dl.facts dt{font:500 .78rem/1.6 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+dl.facts dd{margin:0}
+@media (max-width:520px){dl.facts>div{grid-template-columns:1fr;gap:4px}}
+.subhead{font-size:clamp(1.3rem,2.6vw,1.7rem);margin-top:72px;padding-top:40px;border-top:1px dashed var(--line)}
+.sublede{color:var(--muted);max-width:66ch;margin:12px 0 0}
+section.about{padding-block:clamp(56px,8vw,96px);border-top:1px solid var(--line)}
+.about p{max-width:64ch}
+footer{border-top:1px solid var(--line);padding-block:28px 40px;color:var(--muted);font-size:.86rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#">Alfredo Alea</a>
+    <nav aria-label="Sections">
+      <a href="https://alfredoalea.org/?project=11">AI Advisor</a>
+      <a href="#georgia">Georgia shelters</a>
+      <a href="#about">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Data / AI Engineer · EU remote or hybrid</div>
+      <h1>I measure whether the system actually got better.</h1>
+      <p class="lede">Two case studies, each with a business question, a reproducible method, and the checks that changed my own first conclusion. Every number on this page traces back to a script or a source file.</p>
+      <div class="links">
+        <a class="btn primary" href="#ai-advisor">Read the case studies</a>
+        <a class="btn" href="https://www.linkedin.com/in/alfredo-alea-a2a05941b/">LinkedIn</a>
+        <a class="btn" href="https://github.com/cursorcanis/portfolio-ai-machine-learning-engineer">Code on GitHub</a>
+      </div>
+      <div class="stats" role="list">
+        <div class="stat" role="listitem"><b>52% → 85%</b><span>Italian sources: correct passage reaching the LLM</span></div>
+        <div class="stat" role="listitem"><b>70 questions</b><span>Retrieval benchmark over 689 Wikipedia chunks</span></div>
+        <div class="stat" role="listitem"><b>7 of 9</b><span>Georgia CoCs with more people outside than open beds</span></div>
+        <div class="stat" role="listitem"><b>11 rows</b><span>Carried-forward HUD counts found and excluded</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case" id="ai-advisor">
+    <div class="wrap">
+      <div class="case-head">
+        <div class="eyebrow">Case study 01 · Private deployment · by invitation</div>
+        <h2>AI Advisor</h2>
+        <div class="meta">Rust · retrieval-augmented generation over a locally built transcript index</div>
+      </div>
+
+      <p class="lede">A retrieval-augmented advisor you assemble yourself. Name a public thinker and the app finds their channel, pulls the transcripts from their recent talks, indexes them beside their Wikipedia article, and then answers in their voice — from passages it <em>actually retrieved</em>, rather than from what a general-purpose model half-remembers about them.</p>
+
+      <div class="grid2">
+        <div class="block">
+          <h3>Step one — build an expert</h3>
+          <dl class="steps">
+            <dt>Search</dt><dd>Type a name — Douglas Rushkoff, say — and the app returns their Wikipedia bio so you can confirm it is the right person, alongside the YouTube channels most likely to be theirs, ranked by relevance.</dd>
+            <dt>Add</dt><dd>Press Add on the correct channel. Transcripts are pulled from that channel’s most recent videos, the Wikipedia article is folded in as a baseline, and the whole set is chunked and indexed for retrieval.</dd>
+            <dt>Or paste</dt><dd>A YouTube or Rumble video or channel URL dropped into the same box works too — name the expert when prompted and press Add from URL.</dd>
+            <dt>Watch</dt><dd>A progress card counts videos processed and chunks indexed, and labels each video as a single-narrator monologue or a multi-speaker conversation. That label is not cosmetic; it decides the voice the chat answers in.</dd>
+            <dt>Manage</dt><dd>The indexed-experts list expands to show an expert’s videos, download their transcripts, or remove the expert entirely.</dd>
+          </dl>
+        </div>
+        <div class="block">
+          <h3>Step two — ask them something</h3>
+          <dl class="steps">
+            <dt>Pick a voice</dt><dd>The ASK dropdown lists everyone you have ingested next to the built-in advisors. Choose one to scope the conversation to them, or leave it on All experts and let the whole bench answer.</dd>
+            <dt>Ask</dt><dd>A question in the INQUIRY box retrieves the most relevant passages from that expert’s transcripts and answers from them, in their voice, streaming as it goes.</dd>
+            <dt>Know who is speaking</dt><dd>Every response opens with a bracketed note naming the voice. An expert built from monologues answers in one person’s tone; one built from interviews or panels answers in the aggregate tone of everybody in those videos.</dd>
+            <dt>Keep or reset</dt><dd>Follow-ups continue the thread. Switching the dropdown to a different expert starts a fresh conversation on its own, so contexts never bleed together.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <dl class="facts">
+        <div><dt>Stack</dt><dd>Rust · retrieval-augmented generation over a locally built transcript index</dd></div>
+        <div><dt>Sources</dt><dd>YouTube and Rumble transcripts, with the subject’s Wikipedia article indexed alongside as a baseline</dd></div>
+        <div><dt>Budget</dt><dd>Ingestion is capped at 30 video fetches per hour and tracked by a budget bar. Where YouTube refuses anonymous fetching, importing your own cookies.txt lets ingestion run under your own account</dd></div>
+        <div><dt>Access</dt><dd>By invitation only. The gateway hands off to a sign-in before any part of the app is reachable</dd></div>
+        <div><dt>Hosting</dt><dd>Self-hosted and reached through an ngrok gateway rather than a cloud deployment, which is why the project page checks that it is up before sending you to it</dd></div>
+      </dl>
+
+      <div class="case-links">
+        <a class="btn primary" href="https://alfredoalea.org/?project=11">Open the AI Advisor page</a>
+      </div>
+
+      <h3 class="subhead">One improvement, measured: multilingual retrieval</h3>
+      <p class="sublede">Answers drawn from Italian sources were noticeably worse than answers from English ones. I replaced the English-only search model with one that reads both languages, then benchmarked whether it actually helped.</p>
+
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>English question about an…</th><th>Before</th><th>After</th></tr></thead>
+          <tbody>
+            <tr><td>Italian source: correct passage in top 8 (what the LLM sees)</td><td class="num">52%</td><td class="num"><strong>85%</strong> (21 won, 1 lost)</td></tr>
+            <tr><td>Italian source: correct passage ranked 1st</td><td class="num">28%</td><td class="num"><strong>50%</strong> (95% CI of gain +7 to +37 pts)</td></tr>
+            <tr><td>Italian source, excluding word-overlap questions (n=53), top 8</td><td class="num">47%</td><td class="num"><strong>83%</strong></td></tr>
+            <tr><td>English source (n=10), top 8</td><td class="num">70%</td><td class="num">80% (no loss detected, small sample)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="figs">
+        <figure>
+          <img src="img/ai_advisor_retrieval_hit_rate_by_embedder.png" width="2000" height="960" loading="lazy" alt="Bar chart of retrieval hit rate by embedder: multilingual-e5-small beats bge-small-en-v1.5 on Italian sources.">
+          <figcaption>Retrieval hit rate by embedder.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/ai_advisor_top1_score_vs_correctness.png" width="2000" height="920" loading="lazy" alt="Top-1 similarity score plotted against whether the top passage was correct.">
+          <figcaption>Top-1 similarity score vs. correctness. Scores aren't comparable across models, so they weren't used as evidence.</figcaption>
+        </figure>
+      </div>
+
+      <div class="grid2">
+        <div class="block">
+          <h3>Method</h3>
+          <ul>
+            <li>Replaced the English-only embedder (bge-small-en-v1.5) with multilingual-e5-small (same 384 dimensions) and rebuilt the Qdrant collection.</li>
+            <li>Enforced E5's <code>query:</code>/<code>passage:</code> prefixes inside the embedder after confirming the library doesn't add them.</li>
+            <li>Benchmarked 70 questions over 689 Wikipedia chunks (Italian and English), using the app's chunking (500 characters, 50 overlap) and top-8 retrieval, scored by exact match on the gold answer text.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h3>Recommendations</h3>
+          <ol>
+            <li>Keep the multilingual embedder. Retrieval no longer depends on YouTube's rate-limited translation endpoint.</li>
+            <li>Re-run the benchmark before every model change.</li>
+            <li>Next: Italian-language questions, a 50+ question English set, a run on the production ONNX builds, and a cross-encoder reranker for top-1.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="verify">
+        <h3>How I checked it</h3>
+        <ul>
+          <li>I discarded my first evidence (similarity score 0.62 → 0.81) because scores aren't comparable across models.</li>
+          <li>The original 32 questions are kept inside the 70. I expanded the set because the first interval crossed zero, and I'm disclosing that the stopping rule wasn't fixed in advance.</li>
+          <li>The gain survives removing the questions that could be solved by word overlap, and the prefixes made no measurable difference.</li>
+        </ul>
+        <p class="meta" style="margin-top:14px">Also shipped: incremental backend migration from Next.js/Node to Rust (strangler fig) · 34 unit tests · 35 MB stripped release binary, down from a ~99 MB debug build · token streaming over SSE.</p>
+      </div>
+
+      <div class="case-links">
+        <a class="btn primary" href="https://github.com/cursorcanis/portfolio-ai-machine-learning-engineer/tree/main/ai-advisor-rag">Code &amp; benchmark</a>
+        <a class="btn" href="ai-advisor-snapshot.pdf">One-page snapshot (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="case" id="georgia">
+    <div class="wrap">
+      <div class="case-head">
+        <div class="eyebrow">Case study 02 · Public-data analysis, 2026</div>
+        <h2>Georgia homelessness: shelter capacity gaps by Continuum of Care</h2>
+        <div class="meta">Python (pandas, matplotlib) · reproducible pipeline · automated verification log</div>
+      </div>
+
+      <div class="q">
+        <h3>Business question</h3>
+        <p>HUD's 2025 figures show 12,284 people experiencing homelessness in Georgia, 54% of them unsheltered. Is each Continuum of Care short of shelter beds, or does it have beds people aren't using? Funders need to know which, because the two problems need different investments.</p>
+      </div>
+
+      <figure>
+        <img src="img/ga_unsheltered_vs_open_beds_by_coc_2025.png" width="1800" height="1040" loading="lazy" alt="Unsheltered people compared with open shelter beds for each of Georgia's nine Continuums of Care, 2025.">
+        <figcaption>Unsheltered people vs. open beds by CoC, 2025.</figcaption>
+      </figure>
+
+      <div class="grid2">
+        <div class="block">
+          <h3>Key findings</h3>
+          <ul>
+            <li><strong>7 of 9 CoCs</strong> had more people outside than open beds, including <strong>4 of the 6</strong> with a verified 2025 unsheltered count. Atlanta: <strong>+710</strong>.</li>
+            <li>Balance of State shows the largest gap (<strong>+3,713</strong>), but that figure uses its 2024 unsheltered count, which HUD carried into 2025. Its counts swing widely (1,873–4,407).</li>
+            <li>Shelters were only <strong>65–84% full</strong>. Columbus had more empty beds than people outside. In Savannah, about half the open beds were for families or youth, leaving single adults <strong>55 beds short</strong>.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h3>Recommendations</h3>
+          <ol>
+            <li>Add shelter capacity in Atlanta and Balance of State.</li>
+            <li>Columbus: check restricted beds (up to 43 of 357 are DV, veteran or youth beds) before funding outreach and lower-barrier entry instead of beds.</li>
+            <li>Savannah: convert family units to adult beds.</li>
+            <li>Augusta: confirm the 2025 count, which is identical to 2024.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="figs">
+        <figure>
+          <img src="img/ga_shelter_occupancy_vs_unsheltered_share_2025.png" width="1800" height="1040" loading="lazy" alt="Shelter occupancy rate against unsheltered share by CoC, 2025.">
+          <figcaption>Shelter occupancy vs. unsheltered share, 2025.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/ga_unsheltered_trend_by_region_2015_2025.png" width="1800" height="1000" loading="lazy" alt="Unsheltered counts by region from 2015 to 2025, with carried-forward years excluded.">
+          <figcaption>Unsheltered trend by region, 2015–2025 (carried-forward counts excluded).</figcaption>
+        </figure>
+      </div>
+
+      <div class="verify">
+        <h3>How I checked it</h3>
+        <ul>
+          <li>HUD reuses the prior unsheltered count in sheltered-only years. I found 11 such rows and excluded them from trends.</li>
+          <li>The single-adult check overturned my first conclusion for Savannah.</li>
+          <li>Limits: a single January night, no per-capita rates, and Balance of State's beds and people may be counties apart. Public aggregate data only.</li>
+        </ul>
+        <p class="meta" style="margin-top:14px">Sources: HUD Point-in-Time counts by CoC (2015–2025) and the 2025 Housing Inventory Count, from the <a href="https://www.huduser.gov/portal/datasets/ahar/2025-ahar-part-1-pit-estimates-of-homelessness-in-the-us.html">HUD 2025 AHAR data page</a>.</p>
+      </div>
+
+      <div class="case-links">
+        <a class="btn primary" href="georgia-snapshot.pdf">One-page snapshot (PDF)</a>
+        <a class="btn" href="https://github.com/cursorcanis/portfolio-ai-machine-learning-engineer">All code on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="eyebrow">About</div>
+      <h2 style="margin-top:14px;font-size:clamp(1.6rem,3.5vw,2.2rem)">Alfredo Alea</h2>
+      <p>Data / AI Engineer looking for remote or hybrid roles in the EU. I build retrieval and data pipelines and the evaluation around them, and I report what the evidence supports, including the parts that didn't work. The Georgia analysis mirrors the type of work I led in a previous public-sector data role.</p>
+      <div class="links">
+        <a class="btn primary" href="https://www.linkedin.com/in/alfredo-alea-a2a05941b/">LinkedIn</a>
+        <a class="btn" href="mailto:alfredoaleawork@gmail.com">alfredoaleawork@gmail.com</a>
+        <a class="btn" href="https://github.com/cursorcanis">GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Alfredo Alea</span>
+    <span>Benchmark passages from Wikipedia, CC BY-SA. Homelessness data: U.S. HUD.</span>
+  </div>
+</footer>
+</body>
+</html>
